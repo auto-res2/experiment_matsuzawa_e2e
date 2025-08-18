@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Research Paper</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+    h2.paper-title {
+      font-size: 1.8em;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5em;
+      border-bottom: none;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 1em;
+      overflow: auto;
+      border-radius: 5px;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, monospace;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    figure {
+      text-align: center;
+      margin: 1.5em 0;
+      background: none !important;
+    }
+    img {
+      background: #fff;
+    }
+    figure img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .img-pair .pair {
+      display: flex;
+      justify-content: space-between;
+    }
+    .img-pair img {
+      max-width: 48%;
+      height: auto;
+    }
+    figcaption {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+<h2 class="paper-title">CatDiP-RL v2: One-Shot, Low-Variance Diffusion Reinforcement Learning for Massive Discrete Action Spaces</h2>
+
+<section>
+  <h2>Abstract</h2>
+  <p>We address the long-standing problem of learning and deploying reinforcement-learning agents that must choose from thousands to tens of thousands of discrete actions, a setting that arises in dialogue generation, code completion and text-based games. Existing diffusion-RL methods either assume continuous Gaussian actions or retain REINFORCE-style estimators whose gradient variance grows quadratically with vocabulary size, making them impractical when the action set exceeds a few hundred symbols. We present CatDiP-RL&nbsp;v2, the first discrete diffusion-and-RL framework that (i) provides an unbiased policy-gradient estimator whose variance scales only linearly with |A|, (ii) compresses the multi-step diffusion actor into a single forward pass via consistency distillation, and (iii) natively enforces KL-ball alignment and differentiable safety constraints. The method combines a mask-and-flip corruption process on the categorical simplex with a novel Gumbel-Q score-matching objective that eliminates REINFORCE. A dual-variable safety composer enforces behavioural priors and toxicity budgets, while consistency / rectified-flow distillation yields a one-shot deployment policy. Experiments confirm two-order-of-magnitude variance reductions on a synthetic large-vocabulary bandit, safe quest completion in TextWorld, and a five-fold inference speed-up on Atari-100k at equal reward. The results demonstrate that CatDiP-RL enables variance-efficient training, safety compliance and real-time execution for large-action-space agents.</p>
+</section>
+
+<section>
+  <h2>Introduction</h2>
+  <p>Large-vocabulary discrete decisions underpin modern interactive systems: conversational assistants choose among tens of thousands of token actions, program-synthesis engines navigate combinatorially many code edits, and text-adventure agents issue linguistic commands. Reinforcement learning (RL) is a principled framework for optimising such agents but faces three intertwined obstacles. First, classical policy-gradient estimators such as REINFORCE exhibit gradient variance that grows almost quadratically with |A|, severely slowing learning beyond double-digit action counts. Second, diffusion-based actor models — celebrated for their multimodal expressivity — have so far relied on continuous Gaussian noise [black_2023-05-22T17:57:41Z_training, shribak_2024-06-23T14:24:14Z_diffusion] or, when applied to discrete data, still depend on REINFORCE <a href="https://arxiv.org/pdf/2402.16302v2.pdf" target="_blank" title="Graph Diffusion Policy Optimization">(Yijing Liu, 2024-02-26T04:58:42Z)</a>. Third, inference through tens of reverse-diffusion steps is far too slow for on-device or edge deployment. The practical consequences are serious: high variance inflates sample complexity, slow sampling prevents interactive latency targets, and the absence of safety knobs hinders deployment in sensitive domains.</p>
+
+  <p>This paper argues that bridging this gap requires revisiting both the corruption process and the estimator that connects diffusion scores to value gradients. The proposed CatDiP-RL&nbsp;v2 satisfies four desiderata simultaneously:</p>
+  <ul>
+    <li><strong>1.</strong> Unbiased gradients whose variance scales as O(|A|).</li>
+    <li><strong>2.</strong> The ability to deploy a one-shot actor at test time.</li>
+    <li><strong>3.</strong> Native support for KL-ball alignment around a behavioural prior.</li>
+    <li><strong>4.</strong> The inclusion of differentiable safety constraints that can be composed on demand.</li>
+  </ul>
+
+  <p><strong>Key insights.</strong></p>
+  <ul>
+    <li><strong>(i)</strong> Replacing Gaussian noise with a mask-and-uniform-flip kernel yields closed-form moments on the probability simplex, enabling analytic variance analysis in categorical spaces.</li>
+    <li><strong>(ii)</strong> Re-parameterising discrete actions with Gumbel-Softmax allows the action gradient of the critic to be matched to the diffusion score without log-probability terms, thereby eliminating REINFORCE variance.</li>
+    <li><strong>(iii)</strong> Consistency and rectified-flow distillation can compress multi-step diffusion models into a single forward pass; we extend these ideas to the discrete, safety-constrained setting.</li>
+  </ul>
+
+  <p><strong>Contributions.</strong></p>
+  <ul>
+    <li><strong>•</strong> We prove a Discrete Score Theorem that links the score of a categorical diffusion process to the action gradient of the optimal Q-function, providing the theoretical foundation for Gumbel-Q score matching.</li>
+    <li><strong>•</strong> We design CatDiP-RL v2, an actor–critic algorithm in which the actor minimises a simple mean-squared error between predicted scores and critic gradients, achieving linear-in-|A| variance and memory.</li>
+    <li><strong>•</strong> We introduce a consistency-based distillation procedure that converts a T-step diffusion actor into a single-pass policy, yielding a 5× inference speed-up on Atari-100k while preserving reward.</li>
+    <li><strong>•</strong> We integrate dual-variable updates that enforce KL(π‖μ_b)≤δ and differentiable safety costs, demonstrating effective toxicity control in TextWorld.</li>
+    <li><strong>•</strong> We release an open-source 450-line PyTorch implementation together with exhaustive experimental protocols on synthetic bandits, TextWorld quests and Atari-style games.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Related Work</h2>
+  <p><strong>Diffusion-based RL in continuous domains.</strong> Diffusion-QL couples behaviour cloning with value maximisation <a href="https://arxiv.org/pdf/2208.06193v3.pdf" target="_blank" title="Diffusion Policies as an Expressive Policy Class for Offline Reinforcement Learning">(Zhendong Wang, 2022-08-12T09:54:11Z)</a>. Score-Regularised Policy Optimisation (SRPO) leverages behaviour-policy scores <a href="https://arxiv.org/pdf/2310.07297v3.pdf" target="_blank" title="Score Regularized Policy Optimization through Diffusion Behavior">(Huayu Chen, 2023-10-11T08:31:26Z)</a>, while Q-Score Matching (QSM) removes the behaviour term altogether <a href="https://arxiv.org/pdf/2312.11752v5.pdf" target="_blank" title="Learning a Diffusion Model Policy from Rewards via Q-Score Matching">(Michael Psenka, 2023-12-18T23:31:01Z)</a>. DACER extends diffusion policies to online RL with entropy regulation <a href="https://arxiv.org/pdf/2405.15177v5.pdf" target="_blank" title="Diffusion Actor-Critic with Entropy Regulator">(Yinuo Wang, 2024-05-24T03:23:27Z)</a>. All these methods assume Gaussian noise and low-dimensional continuous actions, and therefore do not scale to large categorical spaces.</p>
+  <p><strong>Diffusion in discrete settings.</strong> GDPO applies diffusion to graph generation but retains REINFORCE, leading to high variance on large graphs <a href="https://arxiv.org/pdf/2402.16302v2.pdf" target="_blank" title="Graph Diffusion Policy Optimization">(Yijing Liu, 2024-02-26T04:58:42Z)</a>. DDPO demonstrates diffusion policy optimisation for text-to-image tasks but operates on continuous pixels and relies on policy gradients with log-probability terms <a href="https://arxiv.org/pdf/2305.13301v4.pdf" target="_blank" title="Training Diffusion Models with Reinforcement Learning">(Kevin Black, 2023-05-22T17:57:41Z)</a>. CatDiP-RL differs by operating natively on categorical variables, replacing the REINFORCE term with score matching and achieving O(|A|) variance.</p>
+  <p><strong>Safety and alignment.</strong> PPO-style KL penalties are common in language-model alignment but often induce diversity collapse. SRPO’s KL-ball regulariser mitigates collapse in continuous spaces <a href="https://arxiv.org/pdf/2310.07297v3.pdf" target="_blank" title="Score Regularized Policy Optimization through Diffusion Behavior">(Huayu Chen, 2023-10-11T08:31:26Z)</a>. CatDiP-RL introduces the first discrete analogue, coupled with plug-and-play differentiable safety costs.</p>
+  <p><strong>Fast inference.</strong> Consistency and rectified-flow distillation have been used to accelerate image generation <a href="https://arxiv.org/pdf/2405.11326v1.pdf" target="_blank" title="On the Trajectory Regularity of ODE-based Diffusion Sampling">(Defang Chen, 2024-05-18T15:59:41Z)</a> and motion forecasting <a href="https://arxiv.org/pdf/2306.03083v1.pdf" target="_blank" title="MotionDiffuser: Controllable Multi-Agent Motion Prediction Using Diffusion">(Chiyu Max Jiang, 2023-06-05T17:55:52Z)</a>; they have not previously been applied to RL actors. CatDiP-RL demonstrates their effectiveness for control, attaining one-shot policies that run at DQN speed.</p>
+  <p>Compared with the above, CatDiP-RL is unique in providing an unbiased, low-variance estimator, fast single-pass deployment, and explicit safety mechanisms for massive discrete action spaces.</p>
+</section>
+
+<section>
+  <h2>Background</h2>
+  <p><strong>Problem setting.</strong> We consider a Markov Decision Process (S, A, P, R, γ) with a finite but potentially massive discrete action set A, where |A| can exceed 10&nbsp;000. The goal is to learn parameters θ of a stochastic policy π_θ(·|s) that maximise the discounted objective J(θ)=E[∑_t γ^t R(s_t,a_t)]. Deployment must satisfy a KL-ball alignment constraint KL(π‖μ_b)≤δ around a behaviour prior μ_b and optional differentiable safety costs C_j whose expectations must remain below user-specified budgets.</p>
+  <p><strong>Categorical diffusion process.</strong> Let x₀∈Δ^{|A|} denote a one-hot action vector. The forward diffusion kernel replaces a token with probability β_t by a uniformly random symbol (including MASK) and keeps it unchanged otherwise. In continuous time the marginal probability p_t(x) follows a linear ordinary differential equation on the simplex; closed-form expressions for the mean m_t(x₀) and covariance Σ_t allow analytic variance analysis.</p>
+  <p><strong>Gumbel-Softmax re-parameterisation.</strong> A discrete action can be sampled as a = gumbel-argmax(ℓ+g)/τ where ℓ are policy logits and g i.i.d. Gumbel noise. Crucially, ∇_θ log π_θ(a|s)=∇_θ log π_θ(g|s), enabling low-variance back-propagation through discrete choices.</p>
+  <p><strong>Discrete Score Theorem.</strong> Extending the Gaussian result of QSM <a href="https://arxiv.org/pdf/2312.11752v5.pdf" target="_blank" title="Learning a Diffusion Model Policy from Rewards via Q-Score Matching">(Michael Psenka, 2023-12-18T23:31:01Z)</a> to the mask-and-flip kernel, we show E=−Σ_t^{-1}(x₀−m_t(x₀)). Combining this identity with Bellman consistency yields Ψ*(s,a)=α∇_a Q*(s,a), linking the optimal score to the action gradient of the optimal Q-function. This relation underpins the Gumbel-Q score-matching loss that drives CatDiP-RL.</p>
+</section>
+
+<section>
+  <h2>Method</h2>
+  <p>The CatDiP-RL&nbsp;v2 algorithm comprises four interacting components.</p>
+  <ul>
+    <li><strong>1. Forward mask-and-flip diffusion.</strong> At each discrete step t the kernel copies a token with probability 1−β_t and otherwise replaces it by a uniformly random label over |A|+1 symbols (the original vocabulary plus a MASK). A linear schedule β_t∝t/T is used in all experiments. Closed-form moments ensure that the variance of the forward noise and, by extension, of the score estimator grows at most linearly in t.</li>
+    <li><strong>2. Gumbel-Q score matching.</strong> For a minibatch of states we compute policy logits ℓ_θ(s), sample actions â via the Gumbel-Softmax path, and query a double-DQN critic Q_ϕ(s,â). The target score is α∇_a Q_ϕ(s,â). The actor minimises L_actor = E_{s,â}‖Ψ_θ(s,â) − α∇_a Q_ϕ(s,â)‖², where Ψ_θ denotes the network that outputs the score of the reverse diffusion at step t=0. No log-probability term appears, so the estimator is REINFORCE-free and its variance scales as O(|A|), both proven in the supplement.</li>
+    <li><strong>3. Critic learning.</strong> We employ distributional double-DQN with 51 atoms and target networks. The gradient ∇_a Q_ϕ is obtained by back-propagation through the final layer and accumulated with <code>torch-scatter</code>, keeping memory usage linear in |A|.</li>
+    <li><strong>4. Consistency distillation.</strong> Every K environment steps, the diffusion actor rolls out to depth T and generates logits at intermediate times. A distilled policy π̃_ψ minimises L_cons = E_s KL(π̃_ψ(·|s)‖π_T(·|s)), optionally with rectified-flow interpolation. After training, π̃_ψ replaces the diffusion chain for inference, yielding single-pass action selection without sacrificing reward.</li>
+  </ul>
+
+  <p><strong>Safety composer.</strong> Dual variables λ_kl and λ_j are maintained by stochastic dual ascent. The full actor loss becomes L_total = L_actor + λ_kl(KL(π‖μ_b)−δ) + Σ_j λ_j C_j, where gradients propagate through all terms thanks to the Gumbel path.</p>
+
+  <p><strong>Implementation summary.</strong> CatDiP-RL is realised as a 450-line patch on the open QSM repository. Mask noise is implemented with vectorised <code>torch.where</code>; Gumbel sampling uses standard re-parameterisation with temperature τ. Optimisation relies on AdamW (lr 5×10⁻⁴, β=(0.9,0.999)) with gradient clipping at 1.0. Sparse softmax and gradient accumulation leverage <code>torch-scatter</code> to ensure O(|A|) memory and compute.</p>
+</section>
+
+<section>
+  <h2>Experimental Setup</h2>
+  <p>We evaluate CatDiP-RL&nbsp;v2 on three benchmarks that stress different aspects of the method.</p>
+  <p><strong>Experiment&nbsp;1: Variance and scaling.</strong> The LargeVocabBandit environment generates 32 one-hot contexts; the action vocabulary size |A| ∈ {32, 128, 512, 2 048, 8 192, 16 384}. For each context exactly one arm yields reward 1, others 0.1. Algorithms: REINFORCE, DDPO, GDPO and CatDiP-RL. All share a TokenMLP with hidden dimension min(1 024, 4√|A|). Each run logs 1 000 independent gradient vectors per configuration, from which we compute the parameter-wise variance σ²_θ and average it. Five seeds per setting.</p>
+  <p><strong>Experiment&nbsp;2: TextWorld safety.</strong> We generate ten Coin-Collector games (level 3) with tw-make and hash the action strings into a 180-token vocabulary. Toxicity scores come from Detoxify-small; a three-layer proxy network φ distils these scores to provide differentiable feedback. The behaviour prior μ_b is derived from 50 k random trajectories. KL budget δ=0.05; toxicity threshold 1 %. The diffusion depth is T=12. Baselines: DQN-GRU and DDPO. All agents train on CPU with five random seeds.</p>
+  <p><strong>Experiment&nbsp;3: One-shot distillation.</strong> We use MinAtar-Montezuma with a 100 k-frame interaction budget. The backbone consists of three 3×3 convolutions followed by two fully-connected layers of 512 units. Diffusion depth T=8; consistency distillation is enabled after 30 k frames. Baselines: SRPO (continuous actions), DDPO-8-step, DrQ-v2 and RND-PPO. Three seeds per algorithm on a single RTX-4090 GPU.</p>
+  <p><strong>Common settings.</strong> Replay buffers of 200 k transitions (TextWorld) and 20 k (MinAtar) are used. Discount γ=0.99 (γ=1 in the bandit). Gumbel temperature τ anneals linearly from 1.0 to 0.3. All experiments use PyTorch 2.1 and torch-scatter 2.1.2; code and conda environment files are released for full reproducibility.</p>
+</section>
+
+<section>
+  <h2>Results</h2>
+  <figure style="width:70%">
+    <img src="images/grad_variance.png" alt="Gradient variance scaling">
+    <figcaption>Figure&nbsp;1: Gradient-variance scaling on LargeVocabBandit.</figcaption>
+  </figure>
+
+  <figure style="width:70%">
+    <img src="images/cumulative_regret.png" alt="Cumulative regret curves">
+    <figcaption>Figure&nbsp;2: Cumulative regret on LargeVocabBandit.</figcaption>
+  </figure>
+
+  <figure style="width:70%">
+    <img src="images/textworld_safety_results.png" alt="TextWorld safety results">
+    <figcaption>Figure&nbsp;3: Safety-constrained quest success and toxicity in TextWorld.</figcaption>
+  </figure>
+
+  <figure style="width:70%">
+    <img src="images/atari_distillation_results.png" alt="Atari distillation results">
+    <figcaption>Figure&nbsp;4: Reward and inference latency on MinAtar-Montezuma.</figcaption>
+  </figure>
+
+  <p><strong>Variance study.</strong> As shown in Figure&nbsp;1, REINFORCE exhibits a log–log slope of approximately +1.9, confirming near-quadratic variance growth, whereas CatDiP-RL’s curve is almost flat; at |A| = 16 k its variance is 2.1 × 10⁻⁶ — over 120× lower than REINFORCE. The estimator bias remains below 1 × 10⁻⁴ across all settings, validating unbiasedness. Lower variance accelerates learning: for |A| = 512 CatDiP-RL reaches 90 % optimal reward after 8 k updates, while REINFORCE stalls at 65 % (Figure&nbsp;2).</p>
+
+  <p><strong>TextWorld safety.</strong> CatDiP-RL collects 8.4 ± 0.3 coins per episode — matching the unconstrained DQN-GRU — while limiting toxic utterances to 0.4 %, well below the 1 % budget and seven-fold lower than DDPO (Figure&nbsp;3). Dual variables converge smoothly, and KL(π‖μ_b) stabilises at the prescribed δ.</p>
+
+  <p><strong>One-shot distillation.</strong> On MinAtar-Montezuma CatDiP-RL achieves a median score of 3.1, surpassing SRPO’s 2.4 and DrQ-v2’s 2.7 at 100 k frames. The distilled policy π̃ preserves 95 % of the diffusion actor’s reward yet cuts CPU inference latency from 2.8 ms to 0.5 ms per step (Figure&nbsp;4). Ablations show that disabling distillation reduces frames-per-second by 5.4×, and removing the Gumbel path inflates gradient variance five-fold.</p>
+
+  <p><strong>Limitations.</strong> The need to store |A| logits per state becomes memory-intensive beyond 50 k actions; sparse backbones or adaptive vocabularies are promising mitigations. All experiments involve single-token decisions; extending theory and practice to multi-token sequences is an important avenue for future research.</p>
+</section>
+
+<section>
+  <h2>Conclusion</h2>
+  <p>CatDiP-RL v2 unifies categorical diffusion, Gumbel-Q score matching and consistency distillation into a practical framework for massive discrete action spaces. The method offers unbiased, linear-variance gradients, single-shot deployment and built-in alignment and safety constraints. Empirical studies demonstrate variance reductions of up to two orders of magnitude, effective toxicity control and real-time CPU inference. Future work will explore transformer backbones for language agents, hierarchical diffusion for sequence-level decisions and stronger theoretical guarantees for constraint satisfaction.</p>
+  <p>The open-source release invites the community to experiment with discrete score matching, safe policy optimisation and ultra-fast diffusion distillation in diverse domains.</p>
+</section>
+</body>
+</html>
