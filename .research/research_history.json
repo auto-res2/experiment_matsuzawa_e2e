@@ -1,0 +1,10 @@
+{
+  "research_topic": "Research on diffusion models and reinforcement learning",
+  "queries": [
+    "diffusion reinforcement learning",
+    "score-based RL",
+    "diffusion policy gradient",
+    "trajectory diffusion control",
+    "diffusion actor critic"
+  ]
+}
