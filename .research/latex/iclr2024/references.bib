@@ -5,3 +5,328 @@
   publisher = {GitHub},
   url       = {https://github.com/airas-org/airas}
 }
+
+% ===========================================
+% REQUIRED CITATIONS
+% These papers must be cited in the manuscript
+% ===========================================
+
+@article{author_year_understanding,
+ title = {Understanding and Adopting Rational Behavior by Bellman Score Estimation}
+}
+
+@article{author_year_understanding,
+ title = {Understanding and Adopting Rational Behavior by Bellman Score Estimation}
+}
+
+@article{black_2023-05-22T17:57:41Z_training,
+ abstract = {Diffusion models are a class of flexible generative models trained with an
+approximation to the log-likelihood objective. However, most use cases of
+diffusion models are not concerned with likelihoods, but instead with
+downstream objectives such as human-perceived image quality or drug
+effectiveness. In this paper, we investigate reinforcement learning methods for
+directly optimizing diffusion models for such objectives. We describe how
+posing denoising as a multi-step decision-making problem enables a class of
+policy gradient algorithms, which we refer to as denoising diffusion policy
+optimization (DDPO), that are more effective than alternative reward-weighted
+likelihood approaches. Empirically, DDPO is able to adapt text-to-image
+diffusion models to objectives that are difficult to express via prompting,
+such as image compressibility, and those derived from human feedback, such as
+aesthetic quality. Finally, we show that DDPO can improve prompt-image
+alignment using feedback from a vision-language model without the need for
+additional data collection or human annotation. The project's website can be
+found at http://rl-diffusion.github.io .},
+ arxiv_url = {https://arxiv.org/pdf/2305.13301v4.pdf},
+ author = {Kevin Black and Michael Janner and Yilun Du and Ilya Kostrikov and Sergey Levine},
+ github_url = {https://github.com/arpitbansal297/Universal-Guided-Diffusion},
+ title = {Training Diffusion Models with Reinforcement Learning},
+ year = {2023-05-22T17:57:41Z}
+}
+
+@article{chen_2023-10-11T08:31:26Z_score,
+ abstract = {Recent developments in offline reinforcement learning have uncovered the
+immense potential of diffusion modeling, which excels at representing
+heterogeneous behavior policies. However, sampling from diffusion policies is
+considerably slow because it necessitates tens to hundreds of iterative
+inference steps for one action. To address this issue, we propose to extract an
+efficient deterministic inference policy from critic models and pretrained
+diffusion behavior models, leveraging the latter to directly regularize the
+policy gradient with the behavior distribution's score function during
+optimization. Our method enjoys powerful generative capabilities of diffusion
+modeling while completely circumventing the computationally intensive and
+time-consuming diffusion sampling scheme, both during training and evaluation.
+Extensive results on D4RL tasks show that our method boosts action sampling
+speed by more than 25 times compared with various leading diffusion-based
+methods in locomotion tasks, while still maintaining state-of-the-art
+performance.},
+ arxiv_url = {https://arxiv.org/pdf/2310.07297v3.pdf},
+ author = {Huayu Chen and Cheng Lu and Zhengyi Wang and Hang Su and Jun Zhu},
+ github_url = {https://github.com/thu-ml/SRPO},
+ title = {Score Regularized Policy Optimization through Diffusion Behavior},
+ year = {2023-10-11T08:31:26Z}
+}
+
+@article{chen_2023-10-11T08:31:26Z_score,
+ abstract = {Recent developments in offline reinforcement learning have uncovered the
+immense potential of diffusion modeling, which excels at representing
+heterogeneous behavior policies. However, sampling from diffusion policies is
+considerably slow because it necessitates tens to hundreds of iterative
+inference steps for one action. To address this issue, we propose to extract an
+efficient deterministic inference policy from critic models and pretrained
+diffusion behavior models, leveraging the latter to directly regularize the
+policy gradient with the behavior distribution's score function during
+optimization. Our method enjoys powerful generative capabilities of diffusion
+modeling while completely circumventing the computationally intensive and
+time-consuming diffusion sampling scheme, both during training and evaluation.
+Extensive results on D4RL tasks show that our method boosts action sampling
+speed by more than 25 times compared with various leading diffusion-based
+methods in locomotion tasks, while still maintaining state-of-the-art
+performance.},
+ arxiv_url = {https://arxiv.org/pdf/2310.07297v3.pdf},
+ author = {Huayu Chen and Cheng Lu and Zhengyi Wang and Hang Su and Jun Zhu},
+ github_url = {https://github.com/thu-ml/SRPO},
+ title = {Score Regularized Policy Optimization through Diffusion Behavior},
+ year = {2023-10-11T08:31:26Z}
+}
+
+@article{chen_2024-05-18T15:59:41Z_the,
+ abstract = {Diffusion-based generative models use stochastic differential equations
+(SDEs) and their equivalent ordinary differential equations (ODEs) to establish
+a smooth connection between a complex data distribution and a tractable prior
+distribution. In this paper, we identify several intriguing trajectory
+properties in the ODE-based sampling process of diffusion models. We
+characterize an implicit denoising trajectory and discuss its vital role in
+forming the coupled sampling trajectory with a strong shape regularity,
+regardless of the generated content. We also describe a dynamic
+programming-based scheme to make the time schedule in sampling better fit the
+underlying trajectory structure. This simple strategy requires minimal
+modification to any given ODE-based numerical solvers and incurs negligible
+computational cost, while delivering superior performance in image generation,
+especially in $5\sim 10$ function evaluations.},
+ arxiv_url = {https://arxiv.org/pdf/2405.11326v1.pdf},
+ author = {Defang Chen and Zhenyu Zhou and Can Wang and Chunhua Shen and Siwei Lyu},
+ github_url = {https://github.com/zju-pi/diff-sampler},
+ title = {On the Trajectory Regularity of ODE-based Diffusion Sampling},
+ year = {2024-05-18T15:59:41Z}
+}
+
+@article{jiang_2023-06-05T17:55:52Z_motiondiffuser,
+ abstract = {We present MotionDiffuser, a diffusion based representation for the joint
+distribution of future trajectories over multiple agents. Such representation
+has several key advantages: first, our model learns a highly multimodal
+distribution that captures diverse future outcomes. Second, the simple
+predictor design requires only a single L2 loss training objective, and does
+not depend on trajectory anchors. Third, our model is capable of learning the
+joint distribution for the motion of multiple agents in a permutation-invariant
+manner. Furthermore, we utilize a compressed trajectory representation via PCA,
+which improves model performance and allows for efficient computation of the
+exact sample log probability. Subsequently, we propose a general constrained
+sampling framework that enables controlled trajectory sampling based on
+differentiable cost functions. This strategy enables a host of applications
+such as enforcing rules and physical priors, or creating tailored simulation
+scenarios. MotionDiffuser can be combined with existing backbone architectures
+to achieve top motion forecasting results. We obtain state-of-the-art results
+for multi-agent motion prediction on the Waymo Open Motion Dataset.},
+ arxiv_url = {https://arxiv.org/pdf/2306.03083v1.pdf},
+ author = {Chiyu Max Jiang and Andre Cornman and Cheolho Park and Ben Sapp and Yin Zhou and Dragomir Anguelov},
+ title = {MotionDiffuser: Controllable Multi-Agent Motion Prediction Using Diffusion},
+ year = {2023-06-05T17:55:52Z}
+}
+
+@article{li_2024-06-02T09:32:28Z_learning,
+ abstract = {Deep reinforcement learning (RL) algorithms typically parameterize the policy
+as a deep network that outputs either a deterministic action or a stochastic
+one modeled as a Gaussian distribution, hence restricting learning to a single
+behavioral mode. Meanwhile, diffusion models emerged as a powerful framework
+for multimodal learning. However, the use of diffusion policies in online RL is
+hindered by the intractability of policy likelihood approximation, as well as
+the greedy objective of RL methods that can easily skew the policy to a single
+mode. This paper presents Deep Diffusion Policy Gradient (DDiffPG), a novel
+actor-critic algorithm that learns from scratch multimodal policies
+parameterized as diffusion models while discovering and maintaining versatile
+behaviors. DDiffPG explores and discovers multiple modes through off-the-shelf
+unsupervised clustering combined with novelty-based intrinsic motivation.
+DDiffPG forms a multimodal training batch and utilizes mode-specific Q-learning
+to mitigate the inherent greediness of the RL objective, ensuring the
+improvement of the diffusion policy across all modes. Our approach further
+allows the policy to be conditioned on mode-specific embeddings to explicitly
+control the learned modes. Empirical studies validate DDiffPG's capability to
+master multimodal behaviors in complex, high-dimensional continuous control
+tasks with sparse rewards, also showcasing proof-of-concept dynamic online
+replanning when navigating mazes with unseen obstacles.},
+ arxiv_url = {https://arxiv.org/pdf/2406.00681v1.pdf},
+ author = {Zechu Li and Rickmer Krohn and Tao Chen and Anurag Ajay and Pulkit Agrawal and Georgia Chalvatzaki},
+ title = {Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient},
+ year = {2024-06-02T09:32:28Z}
+}
+
+@article{liu_2024-02-26T04:58:42Z_graph,
+ abstract = {Recent research has made significant progress in optimizing diffusion models
+for downstream objectives, which is an important pursuit in fields such as
+graph generation for drug design. However, directly applying these models to
+graph presents challenges, resulting in suboptimal performance. This paper
+introduces graph diffusion policy optimization (GDPO), a novel approach to
+optimize graph diffusion models for arbitrary (e.g., non-differentiable)
+objectives using reinforcement learning. GDPO is based on an eager policy
+gradient tailored for graph diffusion models, developed through meticulous
+analysis and promising improved performance. Experimental results show that
+GDPO achieves state-of-the-art performance in various graph generation tasks
+with complex and diverse objectives. Code is available at
+https://github.com/sail-sg/GDPO.},
+ arxiv_url = {https://arxiv.org/pdf/2402.16302v2.pdf},
+ author = {Yijing Liu and Chao Du and Tianyu Pang and Chongxuan Li and Min Lin and Wei Chen},
+ github_url = {https://github.com/sail-sg/GDPO},
+ title = {Graph Diffusion Policy Optimization},
+ year = {2024-02-26T04:58:42Z}
+}
+
+@article{psenka_2023-12-18T23:31:01Z_learning,
+ abstract = {Diffusion models have become a popular choice for representing actor policies
+in behavior cloning and offline reinforcement learning. This is due to their
+natural ability to optimize an expressive class of distributions over a
+continuous space. However, previous works fail to exploit the score-based
+structure of diffusion models, and instead utilize a simple behavior cloning
+term to train the actor, limiting their ability in the actor-critic setting. In
+this paper, we present a theoretical framework linking the structure of
+diffusion model policies to a learned Q-function, by linking the structure
+between the score of the policy to the action gradient of the Q-function. We
+focus on off-policy reinforcement learning and propose a new policy update
+method from this theory, which we denote Q-score matching. Notably, this
+algorithm only needs to differentiate through the denoising model rather than
+the entire diffusion model evaluation, and converged policies through Q-score
+matching are implicitly multi-modal and explorative in continuous domains. We
+conduct experiments in simulated environments to demonstrate the viability of
+our proposed method and compare to popular baselines. Source code is available
+from the project website: https://michaelpsenka.io/qsm.},
+ arxiv_url = {https://arxiv.org/pdf/2312.11752v5.pdf},
+ author = {Michael Psenka and Alejandro Escontrela and Pieter Abbeel and Yi Ma},
+ title = {Learning a Diffusion Model Policy from Rewards via Q-Score Matching},
+ year = {2023-12-18T23:31:01Z}
+}
+
+@article{psenka_2023-12-18T23:31:01Z_learning,
+ abstract = {Diffusion models have become a popular choice for representing actor policies
+in behavior cloning and offline reinforcement learning. This is due to their
+natural ability to optimize an expressive class of distributions over a
+continuous space. However, previous works fail to exploit the score-based
+structure of diffusion models, and instead utilize a simple behavior cloning
+term to train the actor, limiting their ability in the actor-critic setting. In
+this paper, we present a theoretical framework linking the structure of
+diffusion model policies to a learned Q-function, by linking the structure
+between the score of the policy to the action gradient of the Q-function. We
+focus on off-policy reinforcement learning and propose a new policy update
+method from this theory, which we denote Q-score matching. Notably, this
+algorithm only needs to differentiate through the denoising model rather than
+the entire diffusion model evaluation, and converged policies through Q-score
+matching are implicitly multi-modal and explorative in continuous domains. We
+conduct experiments in simulated environments to demonstrate the viability of
+our proposed method and compare to popular baselines. Source code is available
+from the project website: https://michaelpsenka.io/qsm.},
+ arxiv_url = {https://arxiv.org/pdf/2312.11752v5.pdf},
+ author = {Michael Psenka and Alejandro Escontrela and Pieter Abbeel and Yi Ma},
+ title = {Learning a Diffusion Model Policy from Rewards via Q-Score Matching},
+ year = {2023-12-18T23:31:01Z}
+}
+
+@article{rempe_2023-04-04T15:46:42Z_trace,
+ abstract = {We introduce a method for generating realistic pedestrian trajectories and
+full-body animations that can be controlled to meet user-defined goals. We draw
+on recent advances in guided diffusion modeling to achieve test-time
+controllability of trajectories, which is normally only associated with
+rule-based systems. Our guided diffusion model allows users to constrain
+trajectories through target waypoints, speed, and specified social groups while
+accounting for the surrounding environment context. This trajectory diffusion
+model is integrated with a novel physics-based humanoid controller to form a
+closed-loop, full-body pedestrian animation system capable of placing large
+crowds in a simulated environment with varying terrains. We further propose
+utilizing the value function learned during RL training of the animation
+controller to guide diffusion to produce trajectories better suited for
+particular scenarios such as collision avoidance and traversing uneven terrain.
+Video results are available on the project page at
+https://nv-tlabs.github.io/trace-pace .},
+ arxiv_url = {https://arxiv.org/pdf/2304.01893v1.pdf},
+ author = {Davis Rempe and Zhengyi Luo and Xue Bin Peng and Ye Yuan and Kris Kitani and Karsten Kreis and Sanja Fidler and Or Litany},
+ title = {Trace and Pace: Controllable Pedestrian Animation via Guided Trajectory Diffusion},
+ year = {2023-04-04T15:46:42Z}
+}
+
+@article{shribak_2024-06-23T14:24:14Z_diffusion,
+ abstract = {Diffusion-based models have achieved notable empirical successes in
+reinforcement learning (RL) due to their expressiveness in modeling complex
+distributions. Despite existing methods being promising, the key challenge of
+extending existing methods for broader real-world applications lies in the
+computational cost at inference time, i.e., sampling from a diffusion model is
+considerably slow as it often requires tens to hundreds of iterations to
+generate even one sample. To circumvent this issue, we propose to leverage the
+flexibility of diffusion models for RL from a representation learning
+perspective. In particular, by exploiting the connection between diffusion
+models and energy-based models, we develop Diffusion Spectral Representation
+(Diff-SR), a coherent algorithm framework that enables extracting sufficient
+representations for value functions in Markov decision processes (MDP) and
+partially observable Markov decision processes (POMDP). We further demonstrate
+how Diff-SR facilitates efficient policy optimization and practical algorithms
+while explicitly bypassing the difficulty and inference cost of sampling from
+the diffusion model. Finally, we provide comprehensive empirical studies to
+verify the benefits of Diff-SR in delivering robust and advantageous
+performance across various benchmarks with both fully and partially observable
+settings.},
+ arxiv_url = {https://arxiv.org/pdf/2406.16121v2.pdf},
+ author = {Dmitry Shribak and Chen-Xiao Gao and Yitong Li and Chenjun Xiao and Bo Dai},
+ title = {Diffusion Spectral Representation for Reinforcement Learning},
+ year = {2024-06-23T14:24:14Z}
+}
+
+@article{wang_2022-08-12T09:54:11Z_diffusion,
+ abstract = {Offline reinforcement learning (RL), which aims to learn an optimal policy
+using a previously collected static dataset, is an important paradigm of RL.
+Standard RL methods often perform poorly in this regime due to the function
+approximation errors on out-of-distribution actions. While a variety of
+regularization methods have been proposed to mitigate this issue, they are
+often constrained by policy classes with limited expressiveness that can lead
+to highly suboptimal solutions. In this paper, we propose representing the
+policy as a diffusion model, a recent class of highly-expressive deep
+generative models. We introduce Diffusion Q-learning (Diffusion-QL) that
+utilizes a conditional diffusion model to represent the policy. In our
+approach, we learn an action-value function and we add a term maximizing
+action-values into the training loss of the conditional diffusion model, which
+results in a loss that seeks optimal actions that are near the behavior policy.
+We show the expressiveness of the diffusion model-based policy, and the
+coupling of the behavior cloning and policy improvement under the diffusion
+model both contribute to the outstanding performance of Diffusion-QL. We
+illustrate the superiority of our method compared to prior works in a simple 2D
+bandit example with a multimodal behavior policy. We then show that our method
+can achieve state-of-the-art performance on the majority of the D4RL benchmark
+tasks.},
+ arxiv_url = {https://arxiv.org/pdf/2208.06193v3.pdf},
+ author = {Zhendong Wang and Jonathan J Hunt and Mingyuan Zhou},
+ title = {Diffusion Policies as an Expressive Policy Class for Offline Reinforcement Learning},
+ year = {2022-08-12T09:54:11Z}
+}
+
+@article{wang_2024-05-24T03:23:27Z_diffusion,
+ abstract = {Reinforcement learning (RL) has proven highly effective in addressing complex
+decision-making and control tasks. However, in most traditional RL algorithms,
+the policy is typically parameterized as a diagonal Gaussian distribution with
+learned mean and variance, which constrains their capability to acquire complex
+policies. In response to this problem, we propose an online RL algorithm termed
+diffusion actor-critic with entropy regulator (DACER). This algorithm
+conceptualizes the reverse process of the diffusion model as a novel policy
+function and leverages the capability of the diffusion model to fit multimodal
+distributions, thereby enhancing the representational capacity of the policy.
+Since the distribution of the diffusion policy lacks an analytical expression,
+its entropy cannot be determined analytically. To mitigate this, we propose a
+method to estimate the entropy of the diffusion policy utilizing Gaussian
+mixture model. Building on the estimated entropy, we can learn a parameter
+$\alpha$ that modulates the degree of exploration and exploitation. Parameter
+$\alpha$ will be employed to adaptively regulate the variance of the added
+noise, which is applied to the action output by the diffusion model.
+Experimental trials on MuJoCo benchmarks and a multimodal task demonstrate that
+the DACER algorithm achieves state-of-the-art (SOTA) performance in most MuJoCo
+control tasks while exhibiting a stronger representational capacity of the
+diffusion policy.},
+ arxiv_url = {https://arxiv.org/pdf/2405.15177v5.pdf},
+ author = {Yinuo Wang and Likun Wang and Yuxuan Jiang and Wenjun Zou and Tong Liu and Xujie Song and Wenxuan Wang and Liming Xiao and Jiang Wu and Jingliang Duan and Shengbo Eben Li},
+ github_url = {https://github.com/happy-yan/DACER-Diffusion-with-Online-RL},
+ title = {Diffusion Actor-Critic with Entropy Regulator},
+ year = {2024-05-24T03:23:27Z}
+}
