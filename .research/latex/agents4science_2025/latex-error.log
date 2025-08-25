@@ -55,7 +55,18 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
 No file paper.aux.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -126,7 +137,9 @@ No file paper.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
@@ -134,259 +147,114 @@ No file paper.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
 
 Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 79.
+ input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
 
 Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 85.
+ input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
 /base/8r.enc}]
 
 Package natbib Warning: Citation `ashish_2017_attention' on page 2 undefined on
- input line 101.
+ input line 67.
+
+
+Package natbib Warning: Citation `ashish_2017_attention' on page 2 undefined on
+ input line 76.
 
 [2]
+Underfull \vbox (badness 10000) has occurred while \output is active [3]
 
-Package natbib Warning: Citation `ashish_2017_attention' on page 3 undefined on
- input line 110.
+LaTeX Warning: File `images/training_curves.pdf' not found on input line 133.
 
 
-! LaTeX Error: Environment algorithm undefined.
+! Package pdftex.def Error: File `images/training_curves.pdf' not found: using 
+draft setting.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.126 \begin{algorithm}
-                       [H]
+l.133 ....7\linewidth]{images/training_curves.pdf}
+                                                  
+[4]
 
-! LaTeX Error: \caption outside float.
+LaTeX Warning: File `images/attention_visualization.pdf' not found on input lin
+e 139.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/attention_visualization.pdf' not found
+: using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127   \caption
-                {Attention-Driven Policy Gradient Training}
+l.139 ...idth]{images/attention_visualization.pdf}
+                                                  
 
-! LaTeX Error: Environment algorithmic undefined.
+LaTeX Warning: File `images/performance_comparison.pdf' not found on input line
+ 145.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/performance_comparison.pdf' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128   \begin{algorithmic}
-                           [1]
-! Undefined control sequence.
-l.129     \State
-                 initialize model parameters $\theta$ and environment
-! Undefined control sequence.
-l.130     \For
-              {timestep $=1$ 	extbf{to} $10^{6}$}
-! Undefined control sequence.
-l.131       \State
-                   reset environment; obtain initial state $s_{0}$
-! Undefined control sequence.
-l.132       \While
-                  {episode not terminated}
-! Undefined control sequence.
-l.133         \State
-                     append $s_{t}$ to state buffer $\mathcal{B}$
-! Undefined control sequence.
-l.134         \State
-                     $z_{t} \leftarrow \textit{TransformerEncoder}(\mathcal{...
-
-! Undefined control sequence.
-l.135         \State
-                     sample action $a_{t} \sim \pi_{\theta}(\,\cdot\mid z_{t})$
-
-! Undefined control sequence.
-l.136         \State
-                     execute $a_{t}$; receive $s_{t+1}$, $r_{t}$, done flag
-! Undefined control sequence.
-l.137         \State
-                     store transition $(s_{t},a_{t},r_{t},s_{t+1})$ in repla...
-
-! Undefined control sequence.
-l.138       \EndWhile
-                     
-! Undefined control sequence.
-l.139       \State
-                   compute returns $G_{t}$ for episode
-! Undefined control sequence.
-l.140       \State
-                   update $\theta \leftarrow \theta + \alpha \, \nabla_{\the...
-
-! Undefined control sequence.
-l.141       \If
-               {$t$ mod $10\,000 = 0$}
-! Undefined control sequence.
-l.142         \State
-                     evaluate policy over fixed set of episodes
-! Undefined control sequence.
-l.143       \EndIf
-                  
-! Undefined control sequence.
-l.144     \EndFor
-                 
-
-! LaTeX Error: \begin{document} ended by \end{algorithmic}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+l.145 ...width]{images/performance_comparison.pdf}
                                                   
-l.145   \end{algorithmic}
-                         
 
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
+Underfull \vbox (badness 10000) has occurred while \output is active [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      ]
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.146 \end{algorithm}
-                     
-[3]
+Package natbib Warning: Citation `ashish_2017_attention' on page 6 undefined on
+ input line 155.
 
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.165 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.167   \includegraphics
-                        [width=0.7\linewidth]{ images/training_curves.pdf }
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167 ...cs[width=0.7\linewidth]{ images/training_
-                                                  curves.pdf }
-! Extra }, or forgotten $.
-l.167 ...\linewidth]{ images/training_curves.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.168 ...mesteps for the proposed method and PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.171 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.173   \includegraphics
-                        [width=0.7\linewidth]{ images/attention_visualizatio...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.173 ...s[width=0.7\linewidth]{ images/attention_
-                                                  visualization.pdf }
-! Extra }, or forgotten $.
-l.173 ...th]{ images/attention_visualization.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.174 ...s highlighting focus on key past states.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.175 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.177 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.179   \includegraphics
-                        [width=0.7\linewidth]{ images/performance_comparison...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 ...width=0.7\linewidth]{ images/performance_
-                                                  comparison.pdf }
-! Extra }, or forgotten $.
-l.179 ...dth]{ images/performance_comparison.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.180 ...onments showing \(~15\%\) gain over PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{figure}
-                  
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 4 undefined on
- input line 189.
-
-No file paper.bbl.
-[4] [5] [6] [7]
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.167 \end{thebibliography}
+                           ] [7]
 
 Package natbib Warning: There were undefined citations.
 
-[8] [9] (./paper.aux)
+[8] (./paper.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+)
 kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ectt1000
 mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ectt1000
 This is METAFONT, Version 2.71828182 (TeX Live 2023/Debian) (preloaded base=mf)
@@ -460,14 +328,14 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (9 pages, 139791 bytes).
+Output written on paper.pdf (8 pages, 135141 bytes).
 Transcript written on paper.log.
 This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 The top-level auxiliary file: paper.aux
 The style file: plainnat.bst
-Database file #1: references.bib
+I found no \bibdata command---while reading file paper.aux
 Warning--I didn't find a database entry for "ashish_2017_attention"
-(There was 1 warning)
+(There was 1 error message)
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
@@ -525,8 +393,32 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(./paper.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./paper.aux
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -597,270 +489,81 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 79.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 85.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/base/8r.enc}]
+/base/8r.enc}] [2]
+Underfull \vbox (badness 10000) has occurred while \output is active [3]
 
-Package natbib Warning: Citation `ashish_2017_attention' on page 2 undefined on
- input line 101.
-
-[2]
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 3 undefined on
- input line 110.
+LaTeX Warning: File `images/training_curves.pdf' not found on input line 133.
 
 
-! LaTeX Error: Environment algorithm undefined.
+! Package pdftex.def Error: File `images/training_curves.pdf' not found: using 
+draft setting.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.126 \begin{algorithm}
-                       [H]
+l.133 ....7\linewidth]{images/training_curves.pdf}
+                                                  
+[4]
 
-! LaTeX Error: \caption outside float.
+LaTeX Warning: File `images/attention_visualization.pdf' not found on input lin
+e 139.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/attention_visualization.pdf' not found
+: using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127   \caption
-                {Attention-Driven Policy Gradient Training}
+l.139 ...idth]{images/attention_visualization.pdf}
+                                                  
 
-! LaTeX Error: Environment algorithmic undefined.
+LaTeX Warning: File `images/performance_comparison.pdf' not found on input line
+ 145.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/performance_comparison.pdf' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128   \begin{algorithmic}
-                           [1]
-! Undefined control sequence.
-l.129     \State
-                 initialize model parameters $\theta$ and environment
-! Undefined control sequence.
-l.130     \For
-              {timestep $=1$ 	extbf{to} $10^{6}$}
-! Undefined control sequence.
-l.131       \State
-                   reset environment; obtain initial state $s_{0}$
-! Undefined control sequence.
-l.132       \While
-                  {episode not terminated}
-! Undefined control sequence.
-l.133         \State
-                     append $s_{t}$ to state buffer $\mathcal{B}$
-! Undefined control sequence.
-l.134         \State
-                     $z_{t} \leftarrow \textit{TransformerEncoder}(\mathcal{...
-
-! Undefined control sequence.
-l.135         \State
-                     sample action $a_{t} \sim \pi_{\theta}(\,\cdot\mid z_{t})$
-
-! Undefined control sequence.
-l.136         \State
-                     execute $a_{t}$; receive $s_{t+1}$, $r_{t}$, done flag
-! Undefined control sequence.
-l.137         \State
-                     store transition $(s_{t},a_{t},r_{t},s_{t+1})$ in repla...
-
-! Undefined control sequence.
-l.138       \EndWhile
-                     
-! Undefined control sequence.
-l.139       \State
-                   compute returns $G_{t}$ for episode
-! Undefined control sequence.
-l.140       \State
-                   update $\theta \leftarrow \theta + \alpha \, \nabla_{\the...
-
-! Undefined control sequence.
-l.141       \If
-               {$t$ mod $10\,000 = 0$}
-! Undefined control sequence.
-l.142         \State
-                     evaluate policy over fixed set of episodes
-! Undefined control sequence.
-l.143       \EndIf
-                  
-! Undefined control sequence.
-l.144     \EndFor
-                 
-
-! LaTeX Error: \begin{document} ended by \end{algorithmic}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+l.145 ...width]{images/performance_comparison.pdf}
                                                   
-l.145   \end{algorithmic}
-                         
 
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.146 \end{algorithm}
-                     
-[3]
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.165 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.167   \includegraphics
-                        [width=0.7\linewidth]{ images/training_curves.pdf }
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167 ...cs[width=0.7\linewidth]{ images/training_
-                                                  curves.pdf }
-! Extra }, or forgotten $.
-l.167 ...\linewidth]{ images/training_curves.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.168 ...mesteps for the proposed method and PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.171 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.173   \includegraphics
-                        [width=0.7\linewidth]{ images/attention_visualizatio...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.173 ...s[width=0.7\linewidth]{ images/attention_
-                                                  visualization.pdf }
-! Extra }, or forgotten $.
-l.173 ...th]{ images/attention_visualization.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.174 ...s highlighting focus on key past states.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.175 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.177 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.179   \includegraphics
-                        [width=0.7\linewidth]{ images/performance_comparison...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 ...width=0.7\linewidth]{ images/performance_
-                                                  comparison.pdf }
-! Extra }, or forgotten $.
-l.179 ...dth]{ images/performance_comparison.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.180 ...onments showing \(~15\%\) gain over PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{figure}
-                  
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 4 undefined on
- input line 189.
-
-(./paper.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 8.
-
-) [4] [5] [6] [7]
-
-Package natbib Warning: There were undefined citations.
-
-[8] [9] (./paper.aux) )
+Underfull \vbox (badness 10000) has occurred while \output is active [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      ] [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.167 \end{thebibliography}
+                           ] [7] [8] (./paper.aux) )
 (see the transcript file for additional information) </home/runner/.texlive2023
 /texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
@@ -872,7 +575,7 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (9 pages, 140613 bytes).
+Output written on paper.pdf (8 pages, 136149 bytes).
 Transcript written on paper.log.
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
@@ -931,8 +634,32 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(./paper.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./paper.aux
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1003,270 +730,81 @@ Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd)
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 79.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd)
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 1 undefined on
- input line 85.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/base/8r.enc}]
+/base/8r.enc}] [2]
+Underfull \vbox (badness 10000) has occurred while \output is active [3]
 
-Package natbib Warning: Citation `ashish_2017_attention' on page 2 undefined on
- input line 101.
-
-[2]
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 3 undefined on
- input line 110.
+LaTeX Warning: File `images/training_curves.pdf' not found on input line 133.
 
 
-! LaTeX Error: Environment algorithm undefined.
+! Package pdftex.def Error: File `images/training_curves.pdf' not found: using 
+draft setting.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.126 \begin{algorithm}
-                       [H]
+l.133 ....7\linewidth]{images/training_curves.pdf}
+                                                  
+[4]
 
-! LaTeX Error: \caption outside float.
+LaTeX Warning: File `images/attention_visualization.pdf' not found on input lin
+e 139.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/attention_visualization.pdf' not found
+: using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127   \caption
-                {Attention-Driven Policy Gradient Training}
+l.139 ...idth]{images/attention_visualization.pdf}
+                                                  
 
-! LaTeX Error: Environment algorithmic undefined.
+LaTeX Warning: File `images/performance_comparison.pdf' not found on input line
+ 145.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+
+! Package pdftex.def Error: File `images/performance_comparison.pdf' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.128   \begin{algorithmic}
-                           [1]
-! Undefined control sequence.
-l.129     \State
-                 initialize model parameters $\theta$ and environment
-! Undefined control sequence.
-l.130     \For
-              {timestep $=1$ 	extbf{to} $10^{6}$}
-! Undefined control sequence.
-l.131       \State
-                   reset environment; obtain initial state $s_{0}$
-! Undefined control sequence.
-l.132       \While
-                  {episode not terminated}
-! Undefined control sequence.
-l.133         \State
-                     append $s_{t}$ to state buffer $\mathcal{B}$
-! Undefined control sequence.
-l.134         \State
-                     $z_{t} \leftarrow \textit{TransformerEncoder}(\mathcal{...
-
-! Undefined control sequence.
-l.135         \State
-                     sample action $a_{t} \sim \pi_{\theta}(\,\cdot\mid z_{t})$
-
-! Undefined control sequence.
-l.136         \State
-                     execute $a_{t}$; receive $s_{t+1}$, $r_{t}$, done flag
-! Undefined control sequence.
-l.137         \State
-                     store transition $(s_{t},a_{t},r_{t},s_{t+1})$ in repla...
-
-! Undefined control sequence.
-l.138       \EndWhile
-                     
-! Undefined control sequence.
-l.139       \State
-                   compute returns $G_{t}$ for episode
-! Undefined control sequence.
-l.140       \State
-                   update $\theta \leftarrow \theta + \alpha \, \nabla_{\the...
-
-! Undefined control sequence.
-l.141       \If
-               {$t$ mod $10\,000 = 0$}
-! Undefined control sequence.
-l.142         \State
-                     evaluate policy over fixed set of episodes
-! Undefined control sequence.
-l.143       \EndIf
-                  
-! Undefined control sequence.
-l.144     \EndFor
-                 
-
-! LaTeX Error: \begin{document} ended by \end{algorithmic}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+l.145 ...width]{images/performance_comparison.pdf}
                                                   
-l.145   \end{algorithmic}
-                         
 
-! LaTeX Error: \begin{document} ended by \end{algorithm}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.146 \end{algorithm}
-                     
-[3]
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.165 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.167   \includegraphics
-                        [width=0.7\linewidth]{ images/training_curves.pdf }
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.167   \includegraphics[width=0.7\linewidth]
-                                             { images/training_curves.pdf }
-! Missing $ inserted.
-<inserted text> 
-                $
-l.167 ...cs[width=0.7\linewidth]{ images/training_
-                                                  curves.pdf }
-! Extra }, or forgotten $.
-l.167 ...\linewidth]{ images/training_curves.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.168 ...mesteps for the proposed method and PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.169 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.171 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.173   \includegraphics
-                        [width=0.7\linewidth]{ images/attention_visualizatio...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.173   \includegraphics[width=0.7\linewidth]
-                                             { images/attention_visualizatio...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.173 ...s[width=0.7\linewidth]{ images/attention_
-                                                  visualization.pdf }
-! Extra }, or forgotten $.
-l.173 ...th]{ images/attention_visualization.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.174 ...s highlighting focus on key past states.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.175 \end{figure}
-                  
-
-! LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.177 \begin{figure}[H]
-                       
-! Undefined control sequence.
-l.179   \includegraphics
-                        [width=0.7\linewidth]{ images/performance_comparison...
-
-! Missing number, treated as zero.
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   ]
-l.179   \includegraphics[width=0.7\linewidth]
-                                             { images/performance_comparison...
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.179 ...width=0.7\linewidth]{ images/performance_
-                                                  comparison.pdf }
-! Extra }, or forgotten $.
-l.179 ...dth]{ images/performance_comparison.pdf }
-                                                  
-! Missing $ inserted.
-<inserted text> 
-                $
-l.180 ...onments showing \(~15\%\) gain over PPO.}
-                                                  
-! Missing } inserted.
-<inserted text> 
-                }
-l.181 \end{figure}
-                  
-
-Package natbib Warning: Citation `ashish_2017_attention' on page 4 undefined on
- input line 189.
-
-(./paper.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 8.
-
-) [4] [5] [6] [7]
-
-Package natbib Warning: There were undefined citations.
-
-[8] [9] (./paper.aux) )
+Underfull \vbox (badness 10000) has occurred while \output is active [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 
+      ] [6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.167 \end{thebibliography}
+                           ] [7] [8] (./paper.aux) )
 (see the transcript file for additional information) </home/runner/.texlive2023
 /texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
@@ -1278,5 +816,5 @@ cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (9 pages, 140613 bytes).
+Output written on paper.pdf (8 pages, 136149 bytes).
 Transcript written on paper.log.
